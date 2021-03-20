@@ -5,7 +5,7 @@ require 'faker'
 Student.destroy_all
 
 25.times do |i|
-  Student.create!(
+  student = Student.create!(
     name: Faker::Name.name,
     description: Faker::Lorem.sentence(word_count: 8),
     email: Faker::Internet.email,
@@ -21,6 +21,9 @@ Student.destroy_all
     observation: Faker::Lorem.sentence(word_count: 25),
     youtube_video: 'https://www.youtube.com/watch?v=-83gGOmQgKI'
   )
+
+  student.avatar = File.open('/Users/artur.prado/Downloads/artigo-v.jpeg')
+  student.save!
 end
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

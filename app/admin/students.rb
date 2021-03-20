@@ -56,7 +56,7 @@ ActiveAdmin.register Student do
           f.input :observation
           f.input :youtube_video
           f.input :status
-          f.input :avatar
+          f.input :avatar, :as => :file, :hint => image_tag(f.object.avatar.url)
         end
       end
     end
