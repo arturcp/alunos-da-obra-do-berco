@@ -2,7 +2,6 @@
 
 require 'faker'
 
-Photo.destroy_all
 Student.destroy_all
 
 25.times do |i|

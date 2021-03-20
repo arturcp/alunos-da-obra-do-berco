@@ -16,8 +16,6 @@ class CreateStudent < ActiveRecord::Migration[6.1]
       t.string :observation
       t.string :youtube_video
 
-      t.references :photo
-
       t.timestamps
     end
   end
