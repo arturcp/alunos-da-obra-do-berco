@@ -1,0 +1,26 @@
+<h1>Alunos da obra do berço</h1>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Email</th>
+      <th scope="col">Gênero</th>
+      <th scope="col">Telefone</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.email %></td>
+        <td><%= student.gender %></td>
+        <td><%= student.mobile_phone %></td>
+        <td>
+          <%= link_to 'Editar', student_path(student) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
