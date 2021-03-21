@@ -39,7 +39,10 @@ ActiveAdmin.register Student do
     private
 
     def encode_avatar
-      file = permitted_params[:student][:avatar].tempfile.open.read.force_encoding(Encoding::UTF_8)
+      avatar = permitted_params.dig(:student, :avatar)
+      return unless avatar
+
+      file = avatar.tempfile.open.read.force_encoding(Encoding::UTF_8)
       params[:student][:avatar] = Base64.strict_encode64(file)
     end
   end
@@ -69,7 +72,7 @@ ActiveAdmin.register Student do
           f.input :observation
           f.input :youtube_video
           f.input :status
-          f.input :avatar, as: :file
+          f.input :avatar, :as => :file, :hint => "<img src=#{f.object.avatar_src} width=\"150\"/>".html_safe
         end
       end
     end
