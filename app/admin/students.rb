@@ -73,7 +73,7 @@ ActiveAdmin.register Student do
 
       tab 'Links' do
         f.inputs 'Redes, Sites e Documentos' do
-          f.input :cv, :as => :file, :hint => "<embed src=#{f.object.cv_src}>".html_safe
+          f.input :cv, as: :file, hint: "<embed src=#{f.object.cv_src}>".html_safe
           f.input :website
           f.input :twitter
           f.input :instagram
@@ -81,7 +81,7 @@ ActiveAdmin.register Student do
           f.input :observation
           f.input :youtube_video
           f.input :status
-          f.input :avatar, :as => :file, :hint => "<img src=#{f.object.avatar_src} width=\"150\"/>".html_safe
+          f.input :avatar, as: :file, hint: "<img src=#{f.object.avatar_src} width=\"150\"/>".html_safe
         end
       end
     end
