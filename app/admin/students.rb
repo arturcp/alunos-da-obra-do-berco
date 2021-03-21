@@ -14,10 +14,9 @@ ActiveAdmin.register Student do
   end
 
   controller do
-    def update
-      file = permitted_params[:student][:avatar].tempfile.open.read.force_encoding(Encoding::UTF_8)
-      params[:student][:avatar] = Base64.strict_encode64(file)
+    before_action :encode_avatar, only: [:update, :create]
 
+    def update
       @student = Student.find(params[:id])
 
       if @student.update(permitted_params[:student])
@@ -28,9 +27,6 @@ ActiveAdmin.register Student do
     end
 
     def create
-      file = permitted_params[:student][:avatar].tempfile.open.read.force_encoding(Encoding::UTF_8)
-      params[:student][:avatar] = Base64.strict_encode64(file)
-
       @student = Student.new(permitted_params[:student])
 
       if @student.save
@@ -38,6 +34,13 @@ ActiveAdmin.register Student do
       else
         render :index
       end
+    end
+
+    private
+
+    def encode_avatar
+      file = permitted_params[:student][:avatar].tempfile.open.read.force_encoding(Encoding::UTF_8)
+      params[:student][:avatar] = Base64.strict_encode64(file)
     end
   end
 
