@@ -63,7 +63,7 @@ ActiveAdmin.register Student do
         end
       end
 
-      tab 'Links', html_options: { class: 'specific_css_class' } do
+      tab 'Links' do
         f.inputs 'Redes, Sites e Documentos' do
           f.input :website
           f.input :twitter
