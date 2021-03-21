@@ -10,4 +10,8 @@ class Student < ApplicationRecord
   def cv_src
     "data:application/pdf;base64,#{self.cv}"
   end
+
+  def embed_youtube_url
+    self.youtube_video.gsub('/watch?v=', '/embed/')
+  end
 end
