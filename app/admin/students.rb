@@ -3,7 +3,7 @@ ActiveAdmin.register Student do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 
-  permit_params :name, :description, :email, :phone, :mobile_phone, :address, :gender, :birth_date, :website, :twitter, :instagram, :facebook, :observation, :youtube_video, :status, :avatar
+  permit_params :name, :description, :email, :phone, :mobile_phone, :address, :gender, :birth_date, :website, :twitter, :instagram, :facebook, :observation, :youtube_video, :status, :avatar, :cv
 
   index do
     id_column
@@ -14,7 +14,7 @@ ActiveAdmin.register Student do
   end
 
   controller do
-    before_action :encode_avatar, only: [:update, :create]
+    before_action :encode_avatar, :encode_cv, only: [:update, :create]
 
     def update
       @student = Student.find(params[:id])
@@ -45,6 +45,14 @@ ActiveAdmin.register Student do
       file = avatar.tempfile.open.read.force_encoding(Encoding::UTF_8)
       params[:student][:avatar] = Base64.strict_encode64(file)
     end
+
+    def encode_cv
+      cv = permitted_params.dig(:student, :cv)
+      return unless cv
+
+      file = cv.tempfile.open.read.force_encoding(Encoding::UTF_8)
+      params[:student][:cv] = Base64.strict_encode64(file)
+    end
   end
 
   form do |f|
@@ -65,6 +73,7 @@ ActiveAdmin.register Student do
 
       tab 'Links' do
         f.inputs 'Redes, Sites e Documentos' do
+          f.input :cv, :as => :file, :hint => "<embed src=#{f.object.cv_src}>".html_safe
           f.input :website
           f.input :twitter
           f.input :instagram

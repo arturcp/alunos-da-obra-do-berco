@@ -6,4 +6,8 @@ class Student < ApplicationRecord
   def avatar_src
     "data:image/png;base64,#{self.avatar}"
   end
+
+  def cv_src
+    "data:application/pdf;base64,#{self.cv}"
+  end
 end

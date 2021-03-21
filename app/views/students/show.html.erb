@@ -68,6 +68,10 @@
               </svg>Facebook</h6>
             <span class="text-secondary"><%= @student.facebook %></span>
           </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+            <embed src="<%= @student.cv_src %>">
+            <%= link_to "baixar currículo", download_path(id: @student.id), target: "_blank"%>
+          </li>
         </ul>
       </div>
     </div>
