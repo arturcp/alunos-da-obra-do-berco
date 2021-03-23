@@ -1,4 +1,3 @@
-
 .main-body {
   padding: 15px;
 }
@@ -12,7 +11,7 @@
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: --default;
+  background-color: var(--default);
   background-clip: border-box;
   border: 0 solid rgba(0,0,0,.125);
   border-radius: .25rem;
@@ -38,7 +37,7 @@
 }
 
 .bg-gray-300 {
-  background-color: --secondaryInverse;
+  background-color: var(--secondaryInverse);
 }
 .h-100 {
   height: 100%!important;

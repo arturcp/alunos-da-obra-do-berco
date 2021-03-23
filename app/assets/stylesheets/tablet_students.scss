@@ -1,0 +1,14 @@
+.header-students {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.img-student {
+  width: 270px;
+}
+
+.title {
+  color: var(--highlight);
+  font-size: 48px;
+}
