@@ -1,18 +1,28 @@
 ActiveAdmin.register Student do
-
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-
-  permit_params :name, :description, :email, :phone, :mobile_phone, :address, 
+  permit_params :name, :description, :email, :phone, :mobile_phone, :address,
     :gender, :birth_date, :website, :twitter, :instagram, :facebook, :observation, :youtube_video, :status, :avatar, :cv
 
-  index do
+  config.clear_action_items!
+
+  menu label: 'Alunos'
+
+  action_item :add, only: :index do
+    link_to "Novo Aluno", new_admin_student_path, method: :get
+  end
+
+  index title: 'Alunos' do
     id_column
-    column :name
-    column :email
-    column :mobile_phone
+    column 'Nome', :name
+    column 'Email', :email
+    column 'Telefone', :phone
+    column 'Celular', :mobile_phone
     actions
   end
+
+  filter :name_contains, label: 'Nome'
+  filter :email_contains, label: 'Email'
+  filter :phone_contains, label: 'Telefone'
+  filter :mobile_phone_contains, label: 'Celular'
 
   controller do
     before_action :encode_avatar, :encode_cv, only: [:update, :create]
@@ -56,36 +66,38 @@ ActiveAdmin.register Student do
     end
   end
 
-  form do |f|
+  form title: 'Novo Aluno' do |f|
     f.semantic_errors
     tabs do
       tab 'Aluno' do
         f.inputs 'Informações Pessoais' do
-          f.input :name
-          f.input :description
-          f.input :birth_date, as: :datepicker
+          f.input :name, label: 'Nome'
+          f.input :description, label: 'Descrição'
+          f.input :birth_date, as: :datepicker, label: 'Data de Nascimento'
           f.input :email
-          f.input :phone
-          f.input :mobile_phone
-          f.input :address
-          f.input :gender, as: :select, collection: [['M', 0], ['F', 1]]
+          f.input :phone, label: 'Telefone'
+          f.input :mobile_phone, label: 'Celular'
+          f.input :address, label: 'Endereço'
+          f.input :gender, as: :select, collection: [['M', 0], ['F', 1]], label: 'Gênero'
         end
       end
 
       tab 'Links' do
         f.inputs 'Redes, Sites e Documentos' do
-          f.input :cv, as: :file, hint: "<embed src=#{f.object.cv_src}>".html_safe
+          f.input :cv, as: :file, hint: ("<embed src=#{f.object.cv_src}>".html_safe if f.object.cv), label: 'Currículo'
           f.input :website
           f.input :twitter
           f.input :instagram
           f.input :facebook
-          f.input :observation
-          f.input :youtube_video
+          f.input :observation, label: 'Observação'
+          f.input :youtube_video, label: 'Vídeo no YouTube'
           f.input :status
-          f.input :avatar, as: :file, hint: "<img src=#{f.object.avatar_src} width=\"150\"/>".html_safe
+          f.input :avatar, as: :file, hint: ("<img src=#{f.object.avatar_src} width=\"150\"/>".html_safe if f.object.avatar), label: 'Foto de Perfil'
         end
       end
     end
-    f.actions
+    f.actions do
+      f.action :submit, as: :button, label: 'Cadastrar Aluno'
+    end
   end
 end
