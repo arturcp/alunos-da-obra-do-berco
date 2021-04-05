@@ -1,0 +1,53 @@
+.header-students {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  @media (min-width: 1024px) {
+    margin-bottom: 0;
+  }
+}
+
+.img-student {
+  width: 170px;
+
+  @media (min-width: 1024px) {
+    width: 270px;
+  }
+}
+
+.title {
+  color: var(--highlight);
+  font-size: 32px;
+
+  @media (min-width: 1024px) {
+    font-size: 48px;
+  }
+}
+
+table {
+  border: 1px solid var(--secondaryInverse)
+}
+
+.tr-color {
+  background-color: #adadad;
+  border-radius: 8px 8px 0 0
+}
+
+tr {
+  white-space: nowrap;
+
+  &:nth-child(odd) {
+    background-color: var(--highlightHover);
+  }
+  &:nth-child(even) {
+    background-color: var(--default);
+  }
+
+  &:hover {
+    background-color: var(--background);
+    transition: ease-in-out 0.3s;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,34 @@
+body {
+  font-family: Poppins, sans-serif;
+  font-weight: 300;
+  background-color: var(--background) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Lexend, sans-serif;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+tbody {
+  font-family: Poppins, sans-serif;
+  font-weight: 300;
+}
+
+thead {
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+}
+
+* {
+  min-height: 0;
+}
+
+a:hover {
+  outline-width: 0;
+}
