@@ -18,8 +18,9 @@
             <% if @student.avatar %>
               <%= image_tag(@student.avatar_src, width: 150) %>
             <% else %>
-              <%= image_tag("base_profile.jpeg", width: 150) %>
+              <%= image_tag('base_profile.jpg', width: 150) %>
             <% end %>
+
             <div class="mt-3">
               <h4><%= @student.name %></h4>
               <p class="text-secondary mb-1"><%= @student.description %></p>
