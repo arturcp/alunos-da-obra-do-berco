@@ -25,7 +25,7 @@
               <%= student.email %>
             </td>
             <td>
-              <%= student.gender %>
+              <%= (student.gender.zero? ? 'M' : 'F') if student.gender %>
             </td>
             <td>
               <%= student.mobile_phone %>
