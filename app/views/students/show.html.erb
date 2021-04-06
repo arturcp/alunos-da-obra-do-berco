@@ -3,9 +3,8 @@
   <!-- Breadcrumb -->
   <nav aria-label="breadcrumb" class="main-breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/">Home</a></li>
-      <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-      <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+      <li class="breadcrumb-item"><a href="/">Página Inicial</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Aluno(a)</li>
     </ol>
   </nav>
   <!-- /Breadcrumb -->
@@ -25,8 +24,6 @@
               <h4><%= @student.name %></h4>
               <p class="text-secondary mb-1"><%= @student.description %></p>
               <p class="text-muted font-size-sm"><%= @student.address %></p>
-              <button class="btn btn-primary">Follow</button>
-              <button class="btn btn-outline-primary">Message</button>
             </div>
           </div>
         </div>
@@ -43,7 +40,7 @@
                   d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
                 </path>
               </svg>Website</h6>
-            <span class="text-secondary"><%= @student.website %></span>
+            <span class="text-secondary"><a href="<%= @student.website %>" target="_blank"><%= @student.website %></a></span>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
             <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -53,7 +50,7 @@
                   d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
                 </path>
               </svg>Twitter</h6>
-            <span class="text-secondary"><%= @student.twitter %></span>
+            <span class="text-secondary"><a href="<%= @student.twitter %>" target="_blank"><%= @student.twitter %></a></span>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
             <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -63,7 +60,7 @@
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
               </svg>Instagram</h6>
-            <span class="text-secondary"><%= @student.instagram %></span>
+            <span class="text-secondary"><a href="<%= @student.instagram %>" target="_blank"><%= @student.instagram %></a></span>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
             <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -71,7 +68,7 @@
                 class="feather feather-facebook mr-2 icon-inline text-primary">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
               </svg>Facebook</h6>
-            <span class="text-secondary"><%= @student.facebook %></span>
+            <span class="text-secondary"><a href="<%= @student.facebook %>" target="_blank"><%= @student.facebook %></a></span>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
             <h6>
