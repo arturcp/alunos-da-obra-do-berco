@@ -27,12 +27,15 @@
 }
 
 table {
-  border: 1px solid var(--secondaryInverse)
+  border: 1px solid var(--secondaryInverse);
+}
+
+.border {
+  border-radius: 8px 8px 0 0;
 }
 
 .tr-color {
-  background-color: #adadad;
-  border-radius: 8px 8px 0 0
+  background-color: #ced1d4 !important;
 }
 
 tr {
