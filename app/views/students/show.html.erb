@@ -2,9 +2,16 @@
 
   <!-- Breadcrumb -->
   <nav aria-label="breadcrumb" class="main-breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/">Página Inicial</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Aluno(a)</li>
+    <ol class="breadcrumb align-navbar">
+      <li class="breadcrumb-item">
+        <a href="/" class="align-navbar">
+          <%= image_tag('obra-do-berco.jpeg', alt:'logo obra do berço', class: 'd-inline-block align-top spacing-image', width:'20px', height:'30' ) %>
+            Página Inicial
+        </a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        <%= @student.name %>
+      </li>
     </ol>
   </nav>
   <!-- /Breadcrumb -->
@@ -15,16 +22,22 @@
         <div class="card-body">
           <div class="d-flex flex-column align-items-center text-center">
             <% if @student.avatar %>
-              <%= image_tag(@student.avatar_src, width: 150) %>
-            <% else %>
-              <%= image_tag('base_profile.jpg', width: 150) %>
-            <% end %>
+              <%= image_tag(@student.avatar_src, width: 150, class: 'border-image' ) %>
+                <% else %>
+                  <%= image_tag('base_profile.jpg', width: 150, class: 'border-image' ) %>
+                    <% end %>
 
-            <div class="mt-3">
-              <h4><%= @student.name %></h4>
-              <p class="text-secondary mb-1"><%= @student.description %></p>
-              <p class="text-muted font-size-sm"><%= @student.address %></p>
-            </div>
+                      <div class="mt-3">
+                        <h4>
+                          <%= @student.name %>
+                        </h4>
+                        <p class="text-secondary mb-1 font-weight-bold">
+                          <%= @student.description %>
+                        </p>
+                        <p class="text-muted font-size-sm">
+                          <%= @student.address %>
+                        </p>
+                      </div>
           </div>
         </div>
       </div>
@@ -36,11 +49,12 @@
                 class="feather feather-globe mr-2 icon-inline">
                 <circle cx="12" cy="12" r="10"></circle>
                 <line x1="2" y1="12" x2="22" y2="12"></line>
-                <path
-                  d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
                 </path>
               </svg>Website</h6>
-            <span class="text-secondary"><a href="<%= @student.website %>" target="_blank"><%= @student.website %></a></span>
+            <span class="text-secondary"><a href="<%= @student.website %>" target="_blank">
+                <%= @student.website %>
+              </a></span>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
             <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -50,7 +64,9 @@
                   d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
                 </path>
               </svg>Twitter</h6>
-            <span class="text-secondary"><a href="<%= @student.twitter %>" target="_blank"><%= @student.twitter %></a></span>
+            <span class="text-secondary"><a href="<%= @student.twitter %>" target="_blank">
+                <%= @student.twitter %>
+              </a></span>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
             <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -60,7 +76,9 @@
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
               </svg>Instagram</h6>
-            <span class="text-secondary"><a href="<%= @student.instagram %>" target="_blank"><%= @student.instagram %></a></span>
+            <span class="text-secondary"><a href="<%= @student.instagram %>" target="_blank">
+                <%= @student.instagram %>
+              </a></span>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
             <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -68,15 +86,17 @@
                 class="feather feather-facebook mr-2 icon-inline text-primary">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
               </svg>Facebook</h6>
-            <span class="text-secondary"><a href="<%= @student.facebook %>" target="_blank"><%= @student.facebook %></a></span>
+            <span class="text-secondary"><a href="<%= @student.facebook %>" target="_blank">
+                <%= @student.facebook %>
+              </a></span>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
             <h6>
               <% if @student.cv %>
-                <%= link_to 'Baixar currículo', download_path(id: @student.id), target: '_blank'%>
-              <% else %>
-                Currículo não cadastrado
-              <% end %>
+                <%= link_to 'Baixar currículo' , download_path(id: @student.id), target: '_blank' %>
+                  <% else %>
+                    Currículo não cadastrado
+                    <% end %>
             </h6>
           </li>
         </ul>
@@ -131,13 +151,12 @@
           </div>
         </div>
       </div>
-      <div class="row gutters-sm">
-        <div class="col-sm-12">
-          <div class="card h-100">
-            <div class="card-body">
-              <iframe width="100%" height="390" src="<%= @student.embed_youtube_url %>" title="Vídeo de <%= @student.name %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-          </div>
+      <div class="card mb-3">
+        <div class="card-body">
+          <iframe width="100%" height="390" src="<%= @student.embed_youtube_url %>"
+            title="Vídeo de <%= @student.name %>" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
         </div>
       </div>
     </div>
